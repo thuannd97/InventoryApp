@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Learning
+@Input() you pass data into child component
+@Output() you send data out of component
+Ex: [product] = "myProduct"
+-> component con -> component cha
+    (select) = "isSelected()"
+-> component con -> component cha
+
+## step to build app
+1. Break your app to components like component parent to component child
+2. Config component parent to component child, Using @Input() and @Output() to pass and send data from component
+parent to component child
+3. Deploy your app using "now". npm install -g now -> run command now 
+
