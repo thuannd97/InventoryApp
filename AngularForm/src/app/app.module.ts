@@ -6,12 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemoFormSkuComponent } from './demo-form-sku/demo-form-sku.component';
 import { DemoFormSkuWithFormBuilderComponent } from './demo-form-sku-with-form-builder/demo-form-sku-with-form-builder.component';
+import { FormWithvalidationsComponent } from './form-withvalidations/form-withvalidations.component';
+import { FormWithEventsComponent } from './form-with-events/form-with-events.component';
+import { FormWithNgModelComponent } from './form-with-ng-model/form-with-ng-model.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemoFormSkuComponent,
-    DemoFormSkuWithFormBuilderComponent
+    DemoFormSkuWithFormBuilderComponent,
+    FormWithvalidationsComponent,
+    FormWithEventsComponent,
+    FormWithNgModelComponent
   ],
   imports: [
     BrowserModule,
