@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { UserDemoComponent } from './DI/user-demo/user-demo.component';
 import { AnalyticsComponent } from './analytics-demo/analytics/analytics.component';
+import { AnalyticsModule } from './analytics-demo/analytics/analytics.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AnalyticsComponent } from './analytics-demo/analytics/analytics.compone
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AnalyticsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
