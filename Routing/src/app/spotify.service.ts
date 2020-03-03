@@ -1,30 +1,44 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpotifyService {
 
-  headers: HttpHeaders = new HttpHeaders({
-    "Authorization": "Bearer {BQCeKIPsR8KjPOD95eSJmqMrV98UE2GVmauk_eAIKlHvvvRL8_J2Mm_Hua5sowvDhYROveWYXBZ91rZ1ebob4sGUZ_qhmgfMXBymQQyJwwJ6S6pWGVoDi0SN_WAFZe8AeKFeaMuUkXVxITlkueYzcWINJP1_m-ca_zmaHW69wxn9d1RVno0bpQVVG8TTgDU-HfMVuAGQ3TP1Quns8axGuNXa3FJ6JUwJioPjr5h18IU8Q2F_jFQx0KE6a85MG_feDcme4JPJ2XKRP_Ky9W8t4CTEV4WLNg}"
-  });
+  static BASE_URL = "http://api.spotify.com/v1";
 
-  constructor(private http: HttpClient, @Inject("API_KEY") apiKey: string, @Inject("OAUTH_KEY") oAuthKey: string) { }
+  constructor(private http: HttpClient) { }
 
-  searchTrack(query: string){
-    let params: string = [
-      `q=${query}`,
-      `type=track`
-    ].join("&");
-    let queryURL: string = `https://api.spotify.com/v1/search?${params}`;
-    return this.http.request(new HttpRequest(
-      'GET',
-      queryURL,
-      {
-        headers: this.headers
-      }
-    ))
+  query(URl: string, params?: Array<string>): Observable<any>{
+    let queryURL = `${SpotifyService.BASE_URL}${URl}`;
+    if(params){
+      queryURL = `${queryURL}?${params.join("&")}`;
+    }
+    //const apiKey = environment.spotifyApiKey;
+    //const apiKey = "BQCyubIpHW5nGBhv_rTkCq5e3vMWRiesLEWYokx0vQ54RHhJS-8dRbtnGJJ5mo0eZS9bwUgK6mdqgGryBt2GxHeiBVb7pSicXSZABInt1O50Ghm-ciJrHj1G_Y3sfRHEd4lfevkn-CDOiT6seA7WKitzQ-QUhTZ7EWHSIE4b9RdNPGRWj6TQKIKVmtor6jgPqWxJtS2quNDGe2Awy0-Rd7ymrHvu7JzkR79OFINiUcm55oEFEEO9t6TCJWNNHDd5Tcbz9lnOZ2CW5RwS9qE5pgneFOrGsg";
+    const header = new HttpHeaders({
+      "Authorization": "Bearer {BQCyubIpHW5nGBhv_rTkCq5e3vMWRiesLEWYokx0vQ54RHhJS-8dRbtnGJJ5mo0eZS9bwUgK6mdqgGryBt2GxHeiBVb7pSicXSZABInt1O50Ghm-ciJrHj1G_Y3sfRHEd4lfevkn-CDOiT6seA7WKitzQ-QUhTZ7EWHSIE4b9RdNPGRWj6TQKIKVmtor6jgPqWxJtS2quNDGe2Awy0-Rd7ymrHvu7JzkR79OFINiUcm55oEFEEO9t6TCJWNNHDd5Tcbz9lnOZ2CW5RwS9qE5pgneFOrGsg}"
+    });
+    const options = {
+      headers: header
+    }
+    console.log("url:", queryURL);
+    return this.http.request('GET', queryURL, options);
+  }
+
+  search(query: string, type: string): Observable<any>{
+    return this.query(`/search`, [`q=${query}`, `type=${type}`]);
+  }
+
+  searchTrack(query: string): Observable<any>{
+    return this.search(query, "track");
+  }
+
+  getTrack(id: string): Observable<any>{
+    return this.query(`/tracks/${id}`);
   }
 
 }

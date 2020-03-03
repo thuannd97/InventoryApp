@@ -11,13 +11,15 @@ import { ContactComponent } from './contact/contact.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { SearchComponent } from './search/search.component';
 import { SearchModule } from './search/search.module';
+import { TrackComponent } from './track/track.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'contactus', redirectTo: 'contact'}
+  {path: 'contactus', redirectTo: 'contact'},
+  {path: 'search', component: SearchComponent}
 ]
 
 @NgModule({
@@ -26,7 +28,8 @@ const routes: Routes = [
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    SearchComponent
+    SearchComponent,
+    TrackComponent
   ],
   imports: [
     BrowserModule,
