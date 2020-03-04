@@ -14,7 +14,7 @@ import { SearchModule } from './search/search.module';
 import { TrackComponent } from './track/track.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: 'search', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},

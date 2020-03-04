@@ -18,7 +18,7 @@ export class SpotifyService {
       queryURL = `${queryURL}?${params.join("&")}`;
     }
     const header = new HttpHeaders({
-      "Authorization": "Bearer BQAObcWPBgwzQstOjh-ipcHk2FFd-5IM-tbK3pVEQeMZ5wT6KdsA64RctjSl9a5euMyDaqI2lKDMRoPIRJQPqqQVqdKgFFV7neDhGRoTMj9okESjHtg9qqeHFv_nCdQTvaBte2O_PWE7ZeMqWHyb-DwFDZfi2O_dx-TLba50wehRgtGks3cgHHnq9su6dilBLei7dmnZnxglknesxD6xUMqTt1NcctJ4fbT6EKiGEbKXFMr1oYo5aDB4ozjDJZYVq2EktGuE62i0XBioJ9XLS0JDn9S-fA"
+      "Authorization": "Bearer BQApQ20vY37eC_0gdHaRVY0MauDIMQWm2l8obL0lHQ6Ut0vUCkeTBShwnveXqXc1ypAwmpkfzDUyR8SE9zyj0I86PCWOJ-XCrfRB1HFwuri07TuG2koAozE7XSsO8Mf6w80DdoWlHEsQH2D-ySWZf5giTjiYG8QIxIkF7yTq-VHeu6uT-MLc96l3dyO5vTm2T16P--TIvmh0qQU7UTxj9dql8CQydzOciPC75AzMxAJfxqN2ps_uSel671bsVZ9IXCpTbCnSVJspZq0Cs8ePQtL9sejl0g"
     });
     const options = {
       headers: header
