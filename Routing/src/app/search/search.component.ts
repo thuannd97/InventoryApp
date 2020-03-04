@@ -19,7 +19,6 @@ export class SearchComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.query = params['query'] || '';
       if(this.query !== ''){
-        console.log('query', this.query);
         this.search();
       }
     });            
@@ -27,26 +26,23 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('query', this.query);
   }
 
   search(){
-    console.log('this.query', this.query);
     if(!this.query){
       return;
     }
     this.spotifyService.searchTrack(this.query)
     .subscribe((data:any) => {
-      console.log('got data:', data);
+      console.log("data:", data);
       this.renderResult(data);
     })
   }
 
   renderResult(res: any){
     this.results = null;
-    if(res && res.body){
-      this.results = res.body.tracks.items;
-      console.log('results:', res.body.tracks.items);
+    if(res && res.tracks){
+      this.results = res.tracks.items;
     }
   }
 

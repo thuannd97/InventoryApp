@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SpotifyService {
 
-  static BASE_URL = "http://api.spotify.com/v1";
+  static BASE_URL = "https://api.spotify.com/v1";
 
   constructor(private http: HttpClient) { }
 
@@ -17,10 +17,8 @@ export class SpotifyService {
     if(params){
       queryURL = `${queryURL}?${params.join("&")}`;
     }
-    //const apiKey = environment.spotifyApiKey;
-    //const apiKey = "BQCyubIpHW5nGBhv_rTkCq5e3vMWRiesLEWYokx0vQ54RHhJS-8dRbtnGJJ5mo0eZS9bwUgK6mdqgGryBt2GxHeiBVb7pSicXSZABInt1O50Ghm-ciJrHj1G_Y3sfRHEd4lfevkn-CDOiT6seA7WKitzQ-QUhTZ7EWHSIE4b9RdNPGRWj6TQKIKVmtor6jgPqWxJtS2quNDGe2Awy0-Rd7ymrHvu7JzkR79OFINiUcm55oEFEEO9t6TCJWNNHDd5Tcbz9lnOZ2CW5RwS9qE5pgneFOrGsg";
     const header = new HttpHeaders({
-      "Authorization": "Bearer {BQCyubIpHW5nGBhv_rTkCq5e3vMWRiesLEWYokx0vQ54RHhJS-8dRbtnGJJ5mo0eZS9bwUgK6mdqgGryBt2GxHeiBVb7pSicXSZABInt1O50Ghm-ciJrHj1G_Y3sfRHEd4lfevkn-CDOiT6seA7WKitzQ-QUhTZ7EWHSIE4b9RdNPGRWj6TQKIKVmtor6jgPqWxJtS2quNDGe2Awy0-Rd7ymrHvu7JzkR79OFINiUcm55oEFEEO9t6TCJWNNHDd5Tcbz9lnOZ2CW5RwS9qE5pgneFOrGsg}"
+      "Authorization": "Bearer BQAObcWPBgwzQstOjh-ipcHk2FFd-5IM-tbK3pVEQeMZ5wT6KdsA64RctjSl9a5euMyDaqI2lKDMRoPIRJQPqqQVqdKgFFV7neDhGRoTMj9okESjHtg9qqeHFv_nCdQTvaBte2O_PWE7ZeMqWHyb-DwFDZfi2O_dx-TLba50wehRgtGks3cgHHnq9su6dilBLei7dmnZnxglknesxD6xUMqTt1NcctJ4fbT6EKiGEbKXFMr1oYo5aDB4ozjDJZYVq2EktGuE62i0XBioJ9XLS0JDn9S-fA"
     });
     const options = {
       headers: header

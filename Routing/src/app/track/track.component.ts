@@ -10,11 +10,15 @@ export class TrackComponent implements OnInit {
 
   track: any;
 
-  constructor(private spotifyService: SpotifyService) { }
+  constructor(private spotifyService: SpotifyService) {
+
+   }
 
   ngOnInit(): void {
-    this.spotifyService.getTrack("11dFghVXANMlKmJXsNCbNl")
-    .subscribe((res: any) => this.renderTrack(res));
+    this.spotifyService.getTrack(this.track.id)
+    .subscribe(
+      (res: any) => this.renderTrack(res)
+    );
   }
 
   renderTrack(track: any){

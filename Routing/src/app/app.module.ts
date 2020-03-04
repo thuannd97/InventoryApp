@@ -19,7 +19,8 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'contactus', redirectTo: 'contact'},
-  {path: 'search', component: SearchComponent}
+  {path: 'search', component: SearchComponent},
+  {path: 'tracks/:id', component: TrackComponent}
 ]
 
 @NgModule({
