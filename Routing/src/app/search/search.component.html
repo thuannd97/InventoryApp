@@ -1,15 +1,16 @@
-<h1>Search</h1>
-<p>
-    <input type="text" #newquery [value]="query"
+<h1 style="text-align: center;">Search</h1>
+<div class="col">
+    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords" #newquery [value]="query"
         (keydown.enter)="submit(newquery.value)">
-        <button (click)="submit(newquery.value)">Search</button>
-</p>
+</div>
+
 <div *ngIf="results">
     <div *ngIf="!results">
         No tracks were found with the term '{{query}}'
     </div>
     <div *ngIf="results">
-        <h1>Results</h1>
+        <h1></h1>
+        <br>
         <div class="row">
             <div class="col-sm-6 col-md-4" *ngFor="let t of results">
                 <div class="thumbnail">
