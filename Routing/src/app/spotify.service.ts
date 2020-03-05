@@ -1,41 +1,45 @@
-import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { Injectable, Inject, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpRequest, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SpotifyService {
+export class SpotifyService implements OnInit{
 
   static BASE_URL = "https://api.spotify.com/v1";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) {
+  }
 
-  query(URl: string, params?: Array<string>): Observable<any>{
+  ngOnInit(){  
+  }
+
+  query(URl: string, params?: Array<string>): Observable<any> {
     let queryURL = `${SpotifyService.BASE_URL}${URl}`;
-    if(params){
+    if (params) {
       queryURL = `${queryURL}?${params.join("&")}`;
     }
-    const header = new HttpHeaders({
-      "Authorization": localStorage.getItem("Authorization")
+    let header = new HttpHeaders({
+      "Authorization": `Bearer ${this.authService.token}`
     });
-    const options = {
+    let options = {
       headers: header
     }
-    console.log("url:", queryURL);
     return this.http.request('GET', queryURL, options);
   }
 
-  search(query: string, type: string): Observable<any>{
+  search(query: string, type: string): Observable<any> {
     return this.query(`/search`, [`q=${query}`, `type=${type}`]);
   }
 
-  searchTrack(query: string): Observable<any>{
+  searchTrack(query: string): Observable<any> {
     return this.search(query, "track");
   }
 
-  getTrack(id: string): Observable<any>{
+  getTrack(id: string): Observable<any> {
     return this.query(`/tracks/${id}`);
   }
 

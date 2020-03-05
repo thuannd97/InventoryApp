@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../spotify.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-search',
@@ -14,8 +15,11 @@ export class SearchComponent implements OnInit {
 
   constructor(private spotifyService: SpotifyService,
               private router: Router,
-              private route: ActivatedRoute) { 
+              private route: ActivatedRoute,
+              private authService: AuthService) { 
     
+    authService.login();           
+
     this.route.queryParams.subscribe(params => {
       this.query = params['query'] || '';
       if(this.query !== ''){
