@@ -23,7 +23,7 @@ export class SpotifyService implements OnInit{
       queryURL = `${queryURL}?${params.join("&")}`;
     }
     let header = new HttpHeaders({
-      "Authorization": `Bearer ${this.authService.token}`
+      "Authorization": `Bearer ${localStorage.getItem('token')}`
     });
     let options = {
       headers: header

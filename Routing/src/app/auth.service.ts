@@ -12,12 +12,13 @@ export class AuthService {
   public token: string;
 
   constructor(private http: HttpClient) { 
-    this.token = localStorage.getItem('token');
+    if(localStorage.getItem('token')){
+      this.token = localStorage.getItem('token');
+    }
   }
 
-  login() {
+  async login() {
     let authorization = `Basic ${AuthService.user_pass_base64}`;
-    console.log("authorization:", authorization);
     let body = new HttpParams()
       .set('grant_type', 'client_credentials')
     let headers = new HttpHeaders(
@@ -28,7 +29,8 @@ export class AuthService {
     let options = {
       headers: headers
     }
-    this.http.post(AuthService.TOKEN_URL, body, options).subscribe((data:any) =>{
+    
+    return this.http.post(AuthService.TOKEN_URL, body, options).toPromise().then((data:any) =>{
       let token = data.access_token;
       localStorage.setItem('token', token);
     });

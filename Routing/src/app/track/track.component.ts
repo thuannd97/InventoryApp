@@ -14,7 +14,6 @@ export class TrackComponent implements OnInit {
 
   constructor(private spotifyService: SpotifyService, private router: Router, private route: ActivatedRoute) { 
     this.route.params.subscribe(params =>{
-      console.log("params", params);
       this.id = params['id']
     });
   }
