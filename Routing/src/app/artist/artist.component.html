@@ -1,0 +1,9 @@
+<div>
+    <div *ngIf="artist">
+        <h1>{{artist.name}}</h1>
+        <p>
+            <img src="{{ artist.images[0].url }}">
+        </p>
+        <p><a href [routerLink]="['/search']">Back</a></p>
+    </div>
+</div>

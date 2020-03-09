@@ -23,7 +23,7 @@ export class SpotifyService implements OnInit{
       queryURL = `${queryURL}?${params.join("&")}`;
     }
     let header = new HttpHeaders({
-      "Authorization": `Bearer ${this.authService.token}`
+      "Authorization": `Bearer ${localStorage.getItem('token')}`
     });
     let options = {
       headers: header
@@ -41,6 +41,18 @@ export class SpotifyService implements OnInit{
 
   getTrack(id: string): Observable<any> {
     return this.query(`/tracks/${id}`);
+  }
+
+  getArtist(id: string): Observable<any> {
+    return this.query(`/artists/${id}`);
+  }
+
+  getAlbum(id: string): Observable<any> {
+    return this.query(`/albums/${id}`);
+  }
+
+  getAlbumTrack(id: string): Observable<any> {
+    return this.query(`/albums/${id}/tracks`);
   }
 
 }

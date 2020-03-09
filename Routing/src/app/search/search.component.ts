@@ -17,16 +17,13 @@ export class SearchComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private authService: AuthService) { 
-    
-    authService.login();           
-
+    this.authService.login();  
     this.route.queryParams.subscribe(params => {
       this.query = params['query'] || '';
       if(this.query !== ''){
         this.search();
       }
     });            
-
   }
 
   ngOnInit(): void {
@@ -38,7 +35,7 @@ export class SearchComponent implements OnInit {
     }
     this.spotifyService.searchTrack(this.query)
     .subscribe((data:any) => {
-      console.log("data:", data);
+      console.log('data', data);
       this.renderResult(data);
     })
   }
