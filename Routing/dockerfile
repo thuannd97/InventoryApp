@@ -1,0 +1,22 @@
+#IMAGES ROOT
+FROM node:10.19-alpine
+#OWNER
+MAINTAINER thuannd97<thuannd169@gmail.com>
+
+#DEFINE WORK DIRECTORY
+WORKDIR /app
+#add /app/node_modules/.bin tp $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+#add dependencies to container
+COPY package.json /app/package.json
+RUN npm install
+RUN npm install -g @angular/cli@9.0.4
+
+#copy builded file to container
+COPY . /app
+
+# start app
+CMD npm start
+
+
