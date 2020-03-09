@@ -12,6 +12,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { SearchComponent } from './search/search.component';
 import { SearchModule } from './search/search.module';
 import { TrackComponent } from './track/track.component';
+import { ArtistComponent } from './artist/artist.component';
+import { AlbumComponent } from './album/album.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'search', pathMatch: 'full'},
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'contactus', redirectTo: 'contact'},
   {path: 'search', component: SearchComponent},
-  {path: 'tracks/:id', component: TrackComponent}
+  {path: 'tracks/:id', component: TrackComponent},
+  {path: 'artist/:id', component: ArtistComponent},
+  {path: 'album/:id', component: AlbumComponent}
 ]
 
 @NgModule({
@@ -30,7 +34,9 @@ const routes: Routes = [
     AboutComponent,
     ContactComponent,
     SearchComponent,
-    TrackComponent
+    TrackComponent,
+    ArtistComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

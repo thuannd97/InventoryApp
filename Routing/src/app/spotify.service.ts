@@ -43,4 +43,16 @@ export class SpotifyService implements OnInit{
     return this.query(`/tracks/${id}`);
   }
 
+  getArtist(id: string): Observable<any> {
+    return this.query(`/artists/${id}`);
+  }
+
+  getAlbum(id: string): Observable<any> {
+    return this.query(`/albums/${id}`);
+  }
+
+  getAlbumTrack(id: string): Observable<any> {
+    return this.query(`/albums/${id}/tracks`);
+  }
+
 }

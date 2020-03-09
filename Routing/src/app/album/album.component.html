@@ -1,0 +1,12 @@
+<div>
+    <div *ngIf="album">
+        <h1>{{album.name}}: {{album.total_tracks}} tracks</h1>
+        <p>
+            <img src="{{ album.images[1].url }}">
+        </p>
+        <p><a href [routerLink]="['/search']">Back</a></p>
+    </div>
+    <div *ngFor="let al of albums">
+        <p>{{al.name}}</p> <audio controls src="{{ al.preview_url }}"></audio>
+    </div>
+</div>
